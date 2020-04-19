@@ -1,15 +1,13 @@
 const sequelize = require('sequelize');
 const config = require('../config/database')
-const user = require ('../models/Users').Users
 const {
     check,
     validationResult,
     body
 } = require('express-validator')
+let transaction;    
 
-const db = new sequelize(config)
 const userController = {
-
     cadastroUsuario: async (req, res) => {
 
         let {
@@ -18,6 +16,7 @@ const userController = {
             nickname,
             password
         } = req.body;
+        console.log(User);
 
         console.log('usuarioController')
         console.log("dados do usuario")
@@ -25,9 +24,10 @@ const userController = {
         console.log("validação do cadastro")
         console.log(validationResult(req))
         let listadeErros = validationResult(req);
+        const db = new sequelize(config);
+
         if (listadeErros.isEmpty()) {
-            const novoUsuario =  user.create({ name: nome, email: email,username:nickname,password:password});
-            console.log("Usuario auto-generated ID:", novoUsuario.id);
+         
 
         }
 

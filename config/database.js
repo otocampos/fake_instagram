@@ -1,17 +1,23 @@
 
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-var dbConection = {
-        username: 'root',
-        password: '',
-        host: 'localhost',
-        port: '3306',
-        database: 'fake-instagram',
-        dialect: 'mysql'
-    
+/* // Option 1: Passing parameters separately
+  const sequelize = new Sequelize('fake-instagram', 'root', '', {
+  host: 'localhost',
+  dialect: 'mysql',
+});  */ 
+
+const config ={
+username:'root',
+password:'',
+database:'fake-instagram',
+host:'localhost',
+dialect:'mysql'
+
 }
 
-var models = [                 
-    'Users',            
-  ];
-module.exports={dbConection,models}
+
+
+module.exports = config
+
+
